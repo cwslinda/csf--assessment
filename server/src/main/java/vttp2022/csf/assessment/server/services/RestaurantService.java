@@ -18,6 +18,8 @@ public class RestaurantService {
 	@Autowired
 	private RestaurantRepository restaurantRepo;
 
+
+
 	// @Autowired
 	// private MapCache mapCache;
 
@@ -35,10 +37,13 @@ public class RestaurantService {
 	// // Use the following method to get a list of restaurants by cuisine
 	// // You can add any parameters (if any) and the return type 
 	// // DO NOT CHNAGE THE METHOD'S NAME
-	// public ??? getRestaurantsByCuisine(???) {
-	// 	// Implmementation in here
+	public Optional<List<Restaurant>> getRestaurantsByCuisine(String cuisine) {
+
+	
+		// Implmementation in here
+		return restaurantRepo.getRestaurantsByCuisine(cuisine);
 		
-	// }
+	}
 
 	// // TODO Task 4
 	// // Use this method to find a specific restaurant

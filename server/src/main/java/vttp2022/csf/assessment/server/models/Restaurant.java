@@ -1,11 +1,10 @@
 package vttp2022.csf.assessment.server.models;
 
-import java.util.List;
-
 import org.bson.Document;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
 
 // Do not modify this class
 public class Restaurant {
@@ -62,12 +61,26 @@ public class Restaurant {
 
 	public JsonObject toJson(){
         return Json.createObjectBuilder()
-            // .add("restaurant_id", getRestaurantId())
-            // .add("name", getName())
+            .add("restaurant_id", getRestaurantId())
+            .add("name", getName())
 			.add("cuisine", getCuisine())
-			// .add("address", getAddress())
+			.add("address", getAddress())
             .build();
     }
 
-	
+	public static Restaurant create(Document doc){
+		Restaurant r = new Restaurant();
+		r.setRestaurantId(doc.getString("restaurant_id"));
+		r.setName(doc.getString("name"));
+		r.setCuisine(doc.getString("cuisine"));
+		String buildingString = ((Document) doc.get("address")).getString("building");
+		String streetString = ((Document) doc.get("address")).getString("street");
+		String zipcode = ((Document) doc.get("address")).getString("zipcode");
+		String borough = doc.getString("borough");
+		String finalAddress = String.format("%s, %s, %s, %s",buildingString, streetString, zipcode, borough);
+		//System.out.println(finalAddress);
+		r.setAddress(finalAddress);
+		return r;
+
+	}
 }
