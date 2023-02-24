@@ -1,1 +1,5 @@
 TODO: Task 1 - Write the mongo import command here
+
+mongoimport --host=localhost --port=27017 \
+	--db=restaurants --collection=restaurants \
+	--jsonArray /Users/cws/Desktop/csf-assessment-template/restaurants.json

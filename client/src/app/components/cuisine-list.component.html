@@ -1,1 +1,12 @@
-<p>cuisine-list works!</p>
+<h2>List of Cuisines</h2>
+
+<ul>
+  <li *ngFor="let r of restaurants">
+    <h4>{{r}}</h4>
+  </li>
+</ul>
+
+<!-- 
+<div *ngFor="let r of restaurants">
+    <h4>{{ r.cuisine }}</h4>
+</div> -->

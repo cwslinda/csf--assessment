@@ -1,5 +1,7 @@
 package vttp2022.csf.assessment.server.models;
 
+import org.bson.Document;
+
 // Do not modify this class
 public class LatLng {
 	private float latitude;
@@ -18,4 +20,10 @@ public class LatLng {
 	public float getLongitude() {
 		return this.longitude;
 	}
+
+
+	// public static LatLng create(Document d){
+	// 	LatLng latLng = new LatLng();
+		
+	// }
 }
