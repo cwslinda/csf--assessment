@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs'
 import { Restaurant, Comment } from './models'
@@ -26,19 +26,29 @@ export class RestaurantService {
 	// // Use the following method to get a list of restaurants by cuisine
 	// // You can add any parameters (if any) and the return type 
 	// // DO NOT CHNAGE THE METHOD'S NAME
-	// public getRestaurantsByCuisine(???) {
-	// 	// Implememntation in here
+	public getRestaurantsByCuisine(cuisine: string): Promise<Restaurant[]> {
+		// Implememntation in here
+		const headers = new HttpHeaders().set('content-type', 'application/json')
 
-	// }
+		return lastValueFrom(
+			this.http.get<Restaurant[]>(`/api/${cuisine}/restaurants`, {headers})
+		)
+
+	}
 	
 	// // TODO Task 4
 	// // Use this method to find a specific restaurant
 	// // You can add any parameters (if any) 
 	// // DO NOT CHNAGE THE METHOD'S NAME OR THE RETURN TYPE
-	// public getRestaurant(???): Promise<Restaurant> {
-	// 	// Implememntation in here
+	public getRestaurant(name: string): Promise<Restaurant> {
+		const headers = new HttpHeaders().set('content-type', 'application/json')
+		// Implememntation in here
 
-	// }
+		return lastValueFrom(
+			this.http.get<Restaurant>(`/api/${name}/restaurants`, {headers})
+		)
+
+	}
 
 	// // TODO Task 5
 	// // Use this method to submit a comment

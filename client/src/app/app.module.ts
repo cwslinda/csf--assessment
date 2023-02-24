@@ -13,6 +13,8 @@ import { RestaurantService } from './restaurant-service';
 
 const appRoutes: Routes = [
   { path: '', component: CuisineListComponent},
+  { path: 'api/:cuisine/restaurants', component: RestaurantCuisineComponent},
+  { path: 'api/:name/comments', component: RestaurantDetailsComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' },
   
 ]

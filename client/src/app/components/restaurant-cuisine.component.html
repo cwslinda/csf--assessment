@@ -1,1 +1,8 @@
-<p>restaurant-cuisine works!</p>
+<div *ngIf="restaurants">
+    <h3>List of {{cuisine}} Restaurants</h3>
+    <div class="box" *ngFor="let r of restaurants" [routerLink]="['/api',  r.name, 'comments']">
+       <h4>{{r.name}}</h4>
+    </div>
+    <button type="button" [routerLink]="['/']">Back</button>
+ </div>
+ 
